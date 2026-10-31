@@ -1,0 +1,29 @@
+[project]
+name = "crm-mcp"
+version = "0.1.0"
+description = "Servidor MCP do Aucta CRM para assistentes de IA (somente leitura)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=4.1,<5",
+    "httpx",
+    "pydantic-settings",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+markers = ["integracao: testes contra o Supabase real (exigem usuários de teste)"]
+
+[tool.basedpyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.12"
+include = ["app"]
